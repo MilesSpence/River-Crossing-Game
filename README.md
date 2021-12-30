@@ -11,6 +11,21 @@ Right now it only implements "Level 1" of that game.
 
 Our code has some problems. First, although the code works for a specific case, the code is not in very good shape. There is a lot of duplicate code in the game-engine class, and there is some unnecessary code in the game-object class. The GUI is also in need of some serious refactoring. Once we get the refactorings out of the way, we will need to generalize the code so that we can not only handle the farmer, goose, and beans, but also handle the other scenarios, like the big and small robots, and perhaps even the monsters and munchkins.
 
+#### Part 1 – Get Familiar with the Current Code
+Getting the GitHub Project
+
+Go to the  rivercrossingstarterLinks to an external site. project on my GitLab site and copy the URL from the clone button. Create a private repo called RiverCrossing in your GitLab account by selecting "Import Project" and then "Repo by URL".
+
+Importing a repository on GitLab using a URL
+
+Paste the URL into the "Project URL" field (it should be the same URL you see above), and call your project RiverCrossing instead of "rivercrossingstarter". Make sure the repo is private and then create the project. Import the project into IntelliJ as you did in Mini-Project 1.
+
+Once you have the files working in your IDE, do the following (note: you do not need to turn this in):
+
+    Sketch out a class diagram for the application that includes all the classes in the "river" package and the relationships between them. Once you have done this, compare your diagram with the class diagram near the end of this project description. They should look similar.
+    Run the GUI and see if you can get to a winning state and a losing state. Get a feel for what the application will and will not allow.
+    Look at Wikipedia's entry on Model-View-Controller (Links to an external site.). Can you identify each of the 3 components in the current application?
+
 #### Part 2 – Refactor the Code
 Finish GameEngineTest
 
@@ -109,7 +124,7 @@ Part 4 Suggestions
 
 We can use the paintRectangle method to refactor and simplify the existing code. But even if we replace filling rectangles and drawing labels with "paintRectangle", the code is still a bit of a mess because we have way too many conditions. Remember that the goal is to just paint 5 rectangles – one for each item and one for the boat.
 
-To do this, there will need to be some logic in paintItem. Our rectangle will depend on where the item is (left bank, boat, or right bank). It may help to use offsets. For example:
+To do this, there will need to be some logic in paintItem. Our rectangle will depend on where the item is (left bank, boat, or right bank). It may help to use offsets.
 
 offsets-2
 
