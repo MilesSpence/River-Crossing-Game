@@ -162,11 +162,13 @@ To obtain all possible rectangles you would also need (x, y) coordinates for the
     Make any changes necessary to get your tests and your application to work.
     Take a look at the GameEngine interface below. Specifically, look at the Javadocs and ensure that your FarmerGameEngine class behaves as specified in the Javadocs.
 
-package river;
+Code:
 
-import java.awt.Color;
+	package river;
 
-public interface GameEngine {
+	import java.awt.Color;
+
+	public interface GameEngine {
 
         /**
          * Returns the number of items in the game. That is, the number of items
@@ -269,7 +271,7 @@ public interface GameEngine {
          * Resets the game.
          */
         void resetGame();
-}
+	}
 
 The requirements of this interface may change some functionality. For example, now you can load 2 non-farmer items into the boat (but you can't row it since only the farmer can drive). Therefore, if you created a passenger field from a previous refactoring, remove it. Instead, create a method that checks how many items are in the boat. When you load an item into the boat, see if there are already two items in the boat. If there are, don't load the item.
 #### Part 6 - AbstractGameEngine
@@ -279,16 +281,16 @@ Implement an abstract class called AbstractGameEngine that contains default impl
 
 Implement a MonsterGameEngine class that makes the game behave like the monster game from the river-crossing web page given above. For this to work, you will need to extend the Item class with ITEM_4 and ITEM_5. As a consequence of this, you will no longer be able to assume that each implementation has exactly 4 items. Some may have 4, some may have 5, and some may have 6. The default implementations in your AbstractGameEngine should work regardless of whether there are 4, 5, or 6 items. The same is true of the RiverGUI class. You will have to add offsets for the 5th and 6th items. In both the abstract-game-engine class and the river-GUI class, you may have implemented some of those methods by iterating over the Item enum type, as in the following code:
 
-for (Item item : Item.values()) {
-    // do something with item
-}
+	for (Item item : Item.values()) {
+	    // do something with item
+	}
 
 To ensure these iterator works even with 4 or 5 items, put the following guard at the start of the iteration.
 
-for (Item item : Item.values()) {
-    if (!(item.ordinal() < numberOfItems())) break;
-    // do something with item
-}
+	for (Item item : Item.values()) {
+	    if (!(item.ordinal() < numberOfItems())) break;
+	    // do something with item
+	}
 
 ### Significant changes since the original version:
 
