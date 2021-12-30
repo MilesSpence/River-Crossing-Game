@@ -5,7 +5,7 @@
 
 In this project, we will refactor and extend an existing RiverCrossing application. The application includes a GUI that works correctly and a test that currently passes. Although the test passes, it is incomplete. Ultimately, we want our application to be able to implement different games like those found here:
 
-https://www.transum.org/software/River_Crossing/ (Links to an external site.)
+https://www.transum.org/software/River_Crossing/
 
 Right now it only implements "Level 1" of that game.
 
@@ -14,7 +14,7 @@ Our code has some problems. First, although the code works for a specific case, 
 #### Part 1 – Get Familiar with the Current Code
 Getting the GitHub Project
 
-Go to the  rivercrossingstarterLinks to an external site. project on my GitLab site and copy the URL from the clone button. Create a private repo called RiverCrossing in your GitLab account by selecting "Import Project" and then "Repo by URL".
+Go to the [riverstartercode](https://code.vt.edu/gregwk/rivercrossingstarter). project on my GitLab site and copy the URL from the clone button. Create a private repo called RiverCrossing in your GitLab account by selecting "Import Project" and then "Repo by URL".
 
 Importing a repository on GitLab using a URL
 
