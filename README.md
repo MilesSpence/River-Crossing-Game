@@ -80,8 +80,8 @@ The RiverGUI has a lot of redundant code. Somehow we've got to clean it up.
 
 The view paints the rectangles on screen. The screen rectangle represent either items (things that can go into the boat) and the boat itself. If there are only 4 items, then there are only 5 rectangles on the screen. Therefore, we should be able to paint the screen with code that looks something like this.
 
-@Override
-public void paintComponent(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 
     refreshItemRectangles(); // based on model
     refreshBoatRectangle(); // based on model
@@ -96,29 +96,29 @@ public void paintComponent(Graphics g) {
     paintBoat(g);
 
     // if game is over, paint restart buttons
-}
+	}
 
-private void paintRectangle(Graphics g, Color color, String label, Rectangle rect) {
-    // similar to paintStringInRectangle
-}
+	private void paintRectangle(Graphics g, Color color, String label, Rectangle rect) {
+	    // similar to paintStringInRectangle
+	}
 
 For the controller, we should have something similar in that the code focuses on those 5 rectangles.
 
-@Override
-public void mouseClicked(MouseEvent e) {
-    if (item0Rectangle.contains(e.getPoint())) {
-        /* respond to click of Item.ITEM_0 */
-    } else if (item1Rectangle.contains(e.getPoint())) {
-        /* respond to click of Item.ITEM_1 */
-    } else if (item2Rectangle.contains(e.getPoint())) {
-        /* respond to click of Item.ITEM_2 */
-    } else if (item3Rectangle.contains(e.getPoint())) {
-        /* respond to click of Item.ITEM_3 */
-    } else if (boatRectangle.contains(e.getPoint())) {
-        /* respond to click of boat */
-    }
-    repaint();
-}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	    if (item0Rectangle.contains(e.getPoint())) {
+		/* respond to click of Item.ITEM_0 */
+	    } else if (item1Rectangle.contains(e.getPoint())) {
+		/* respond to click of Item.ITEM_1 */
+	    } else if (item2Rectangle.contains(e.getPoint())) {
+		/* respond to click of Item.ITEM_2 */
+	    } else if (item3Rectangle.contains(e.getPoint())) {
+		/* respond to click of Item.ITEM_3 */
+	    } else if (boatRectangle.contains(e.getPoint())) {
+		/* respond to click of boat */
+	    }
+	    repaint();
+	}
 
 Part 4 Suggestions
 
@@ -130,26 +130,26 @@ offsets-2
 
 From the 2 (x, y) coordinates in the picture, I can derive any rectangle on the left side of the river.
 
-// beans on left shore
-rect = new Rectangle(leftBaseX, leftBaseY, 50, 50);
-// farmer on left shore
-rect = new Rectangle(leftBaseX + 60, leftBaseY - 60, 50, 50);
-// 1st passenger on boat
-rect = new Rectangle(leftBoatX + 60, leftBaseY, 50, 50);
+	// beans on left shore
+	rect = new Rectangle(leftBaseX, leftBaseY, 50, 50);
+	// farmer on left shore
+	rect = new Rectangle(leftBaseX + 60, leftBaseY - 60, 50, 50);
+	// 1st passenger on boat
+	rect = new Rectangle(leftBoatX + 60, leftBaseY, 50, 50);
 
 To further simplify the items on the shore, you could declare dx and dy arrays with offsets for items 0 through 3:
 
-int[] dx = { 0, 60, 0, 60 };
-int[] dy = { 0, 0, -60, -60 }; 
+	int[] dx = { 0, 60, 0, 60 };
+	int[] dy = { 0, 0, -60, -60 }; 
 
 Then, since ITEM is an enum type, you could use the getValue to return the index for the appropriate item:
 
-int index = item.ordinal();
+	int index = item.ordinal();
 
 If item is ITEM_0, this will return 0; if item is ITEM_1, this will return 1, etc. Therefore, if you knew an item was on the left shore, it's rectangle would be:
 
-rect = new Rectangle(leftBaseX + dx[item.ordinal()],
-                     leftBaseY + dy[item.ordinal()], 50, 50);
+	rect = new Rectangle(leftBaseX + dx[item.ordinal()],
+			     leftBaseY + dy[item.ordinal()], 50, 50);
 
 To obtain all possible rectangles you would also need (x, y) coordinates for the boat and a base rectangle on the right shore.
 #### Part 5 – GameEngine Interface
